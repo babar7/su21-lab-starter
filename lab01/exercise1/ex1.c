@@ -7,7 +7,12 @@ There are two different ways to iterate through a string.
 2nd way hint: all strings end in a null terminator */
 int num_occurrences(char *str, char letter) {
     /* TODO: implement num_occurances */
-    return 0;
+    int count=0;
+    for(int i=0;str[i]!='\0';i++)
+    {if(str[i]==letter)
+    count++;
+    }
+    return count;
 }
 
 /* Populates DNA_SEQ with the number of times each nucleotide appears.
@@ -15,5 +20,22 @@ Each sequence will end with a NULL terminator and will have up to 20 nucleotides
 All letters will be upper case. */
 void compute_nucleotide_occurrences(DNA_sequence *dna_seq) {
     /* TODO: implement compute_nucleotide_occurances */
-    return;
+     dna_seq->A_count = 0;
+    dna_seq->C_count = 0;
+    dna_seq->G_count = 0;
+    dna_seq->T_count = 0;
+    int A_count,C_count,G_count,T_count;
+     for(int i=0;dna_seq->sequence[i]!='\0';i++)
+    {if(dna_seq->sequence[i]=='A')
+    {dna_seq->A_count++;}
+    else if(dna_seq->sequence[i]=='C')
+    {dna_seq->C_count++;}
+    else if(dna_seq->sequence[i]=='G')
+    {dna_seq->G_count++;}
+    else 
+    {dna_seq->T_count++;}
+   
+    }
+    
+   
 }
