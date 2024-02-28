@@ -4,6 +4,7 @@
 
 /* returns a new node whose data is set to DATA and next is set to NULL */
 Node *create_node(int data) {
+    /* Don't worry about malloc yet! It is not in the scope of this lab */
     struct Node *new_node = malloc(sizeof(struct Node));
     if (new_node == NULL) {
         perror("Malloc failed\n");
@@ -13,6 +14,7 @@ Node *create_node(int data) {
     return new_node;
 }
 
+/* Don't worry about free(), it is not in the scope of this lab */
 /* Frees the list starting at HEAD */
 void free_list(Node *head) {
     while (head != NULL) {
@@ -53,7 +55,7 @@ void print_list(struct Node *head) {
 
 /* Iteratively reverses a linked list whose first node is HEAD */
 void reverse_list(struct Node **head) {
-    if (head == NULL) {
+    if (head == NULL || *head == NULL) {
         return;
     }
     struct Node *curr = *head;
@@ -74,10 +76,18 @@ void add_to_back(Node **head, int data) {
     if (head == NULL) {
         return;
     }
+
     Node *new_node = create_node(data);
-    Node *prev;
+    if (*head == NULL) {
+        // If the list is empty, set the new node as the head
+        *head = new_node;
+        return;
+    }
+
+    Node *prev = NULL;
     for (Node *curr = *head; curr != NULL; curr = curr->next) {
         prev = curr;
     }
     prev->next = new_node;
 }
+
