@@ -58,7 +58,7 @@ accumulatorthree:
 	lw s0 0(a0)
 	beq s0 x0 TailCasethree
 	addi a0 a0 4
-	jal accumulatorthree
+	jal accumulatorfive
 	add a0 a0 s0
 	j Epiloguethree
 TailCasethree:
